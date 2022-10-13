@@ -1,4 +1,4 @@
-[submodule "Thirdpart/spdlog"]
-	path = Hazel/vendor/spdlog
+[submodule "Thirdparty/spdlog"]
+	path = Thirdparty/spdlog
 	url = https://github.com/gabime/spdlog.git
 	branch = v1.x

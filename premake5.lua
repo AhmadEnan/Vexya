@@ -4,9 +4,9 @@ workspace "Vexya"
 
 	-- configurations
 	configurations {
-		"Debug",    -- Debug
-		"Release",  -- Release
-		"Dist"      -- Distribute
+		"Debug",    -- Debug Configuration (Less Optimized)
+		"Release",  -- Release Configuration (Optimized, Recommedned for Beta testing)
+		"Shipping"  -- Shipping Configuration (Fully Optimized)
 	}
 
 	flags { "MultiProcessorCompile" } -- Flags Applied to all Projects
@@ -37,7 +37,7 @@ project "Vexya"
 	
 	files {
 		"Vexya/Include/**.h",
-		"Vexya/src/**.cpp"
+		"Vexya/Source/**.cpp"
 	}
 	
 	defines {
@@ -49,7 +49,8 @@ project "Vexya"
 		"Vexya/Include",
 		-- "%{Deps.fmt}",
 		-- "%{Deps.glm}",
-		"Thirdparty"
+		"Thirdparty",
+		"Thirdparty/spdlog/include"
 	}
 
 	links {
@@ -73,8 +74,8 @@ project "Vexya"
 		runtime "Release"
 		optimize "on"
 
-	filter "configurations:Dist"
-		defines "VX_DIST"
+	filter "configurations:Shipping"
+		defines "VX_SHIPPING"
 		runtime "Release"
 		optimize "on"
 
@@ -91,8 +92,8 @@ project "Vexya-Editor"
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 	
 	files {
-		"Vexya-Editor/Include/**.h",
-		"Vexya-Editor/Source/**.cpp"
+		"Vexya-Editor/**.h",
+		"Vexya-Editor/**.cpp"
 	}
 	
 	defines {
@@ -128,8 +129,8 @@ project "Vexya-Editor"
 		runtime "Release"
 		optimize "on"
 	
-	filter "configurations:Dist"
-		defines "VX_DIST"
+	filter "configurations:Shipping"
+		defines "VX_SHIPPING"
 		runtime "Release"
 		optimize "on"
 
@@ -146,18 +147,20 @@ project "Sandbox"
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 	
 	files {
-		"Sandbox/Include/**.h",
-		"Sandbox/Source/**.cpp"
+		"Sandbox/**.h",
+		"Sandbox/**.cpp"
 	}
 	
 	includedirs {
 		"Sandbox/Include",
+		"Vexya/Include",
 		"%{Deps.glm}",
 		"Thirdparty"
 	}
 	
 	links {
-		"Vexya" -- ,
+		"Vexya" 
+		-- ,
 		-- "fmt"
 	}
 	
@@ -178,7 +181,7 @@ project "Sandbox"
 		runtime "Release"
 		optimize "on"
 	
-	filter "configurations:Dist"
-		defines "VX_DIST"
+	filter "configurations:Shipping"
+		defines "VX_SHIPPING"
 		runtime "Release"
 		optimize "on"

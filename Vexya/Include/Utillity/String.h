@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Base.h> 
+#include "typedefs.h"
 
 #include <string> // Just that we support the STL's strings
 #include <vector> // will be changed when we has a custom Vector class
@@ -103,6 +103,7 @@ namespace Vexya
 		char* GetBuffer() const { return m_Buffer; }
 		const size_t GetLength() const { return m_Length; }
 		char& Get(size_t index) const { return m_Buffer[index]; }
+		std::string GetSTDString() const { return std::string(m_Buffer); }
 	};
 
 }

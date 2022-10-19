@@ -104,6 +104,7 @@ project "Vexya-Editor"
 	includedirs {
 		"Vexya-Editor/Include",
 		-- "%{Deps.glm}",
+		"Thirdparty/spdlog/include",
 		"Vexya/Include"
 	}
 	
@@ -155,6 +156,7 @@ project "Sandbox"
 		"Sandbox/Include",
 		"Vexya/Include",
 		"%{Deps.glm}",
+		"Thirdparty/spdlog/include",
 		"Thirdparty"
 	}
 	

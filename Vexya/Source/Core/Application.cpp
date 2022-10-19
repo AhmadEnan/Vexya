@@ -1,4 +1,13 @@
 #include <Core/Application.h>
+#include <Core/Log.h>
+
+// #include <algorithm>
+// #include <chrono>
+// #include <iostream>
+// #include <vector>
+// using namespace std;
+// using namespace std::chrono;
+#include "Utillity/Instrumentor.h"
 
 namespace Vexya 
 {
@@ -15,7 +24,14 @@ namespace Vexya
 
 	ErrorCode Application::Init()
 	{
+		VX_PROFILE_FUNCTION();
 		// Do Initializtion stuff
+		ErrorCode error;
+		error = Log::initialize();
+
+		if (error != ErrorCode::NoError) // TODO: make it a macro (for cleaner code)
+			return error;
+
 		return ErrorCode::NoError;
 	}
 

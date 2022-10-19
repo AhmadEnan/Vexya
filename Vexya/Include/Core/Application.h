@@ -1,6 +1,6 @@
 #pragma once
 #include <Base.h>
-#include <Error.h>
+#include <error.h>
 
 #include <Utillity/String.h>
 
@@ -29,8 +29,14 @@ namespace Vexya
 		ErrorCode Init();
 		ErrorCode Run();
 	private:
-
 		ApplicationState m_State; // The Current state of the application instance
 		String m_ApplicationName; // The Name of the Application instance
+
+	private:
+		static Application* s_Instance;
+		// friend int ::main(int argc, char** argv);
 	};
+
+	// To be defined in CLIENT
+	Application* CreateApplication(/*ApplicationCommandLineArgs args*/);
 }
